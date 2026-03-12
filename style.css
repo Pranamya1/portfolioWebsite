@@ -71,6 +71,36 @@ body {
     gap: 32px;
 }
 
+.nav-ctas {
+    display: none; /* hidden on desktop, shown on tablet/mobile */
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-cta {
+    font-family: inherit;
+    font-size: 18px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-cta-primary {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.nav-cta-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
 .nav-link {
     font-size: 20px;
     font-weight: 300;
@@ -288,6 +318,39 @@ body {
     .nav-toggle {
         display: flex;
     }
+
+    /* Mobile nav links as full-width buttons */
+    .navbar-right .nav-link {
+        display: block;
+        width: calc(100% - 40px); /* 20px left + 20px right */
+        margin: 8px 20px 0 20px; /* smaller top margin */
+        padding: 10px 20px;      /* shorter height */
+        border-radius: 12px;
+        text-align: left;
+        background-color: transparent;
+        color: #ffffff;
+    }
+
+    .navbar-right .nav-link.active {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    /* Mobile navbar CTAs: stacked, centered */
+    .nav-ctas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .nav-cta {
+        width: 276px;
+        height: 61px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -319,5 +382,97 @@ body {
 
     .stat-number {
         font-size: 44px;
+    }
+}
+
+/* Tablet layout: roughly 768px–1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero {
+        padding: 0 0 60px 20px; /* 0 from top, 30px comes from heading margin */
+    }
+
+    .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .hero-content {
+        flex: 1 1 100%;
+    }
+
+    /* Hide right-side visual on tablet */
+    .hero-image {
+        display: none;
+    }
+
+    /* Tablet navbar CTAs: side by side */
+    .nav-ctas {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 50px;
+        margin-left: 20px;
+    }
+
+    .nav-cta {
+        width: 276px;
+        height: 61px;
+    }
+
+    /* Tablet nav links as full-width buttons */
+    .navbar-right .nav-link {
+        display: block;
+        width: calc(100% - 40px); /* 20px left + 20px right */
+        margin: 10px 20px 0 20px; /* top, right, bottom, left */
+        padding: 18px 20px;
+        border-radius: 12px;
+        text-align: left;
+        background-color: transparent;
+        color: #ffffff;
+    }
+
+    .navbar-right .nav-link.active {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .hero-heading {
+        font-size: 64px;
+        font-weight: 800;
+        margin-top: 30px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .hero-subheading {
+        font-size: 23px;
+        font-weight: 300;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .hero-actions {
+        margin-top: 20px;
+        margin-left: 20px;
+        gap: 50px; /* distance between buttons */
+    }
+
+    .btn {
+        width: 276px;
+        height: 61px;
+    }
+
+    .hero-stats {
+        margin-top: 20px;
+        margin-left: 20px;
+        gap: 88px; /* distance between numbers */
+    }
+
+    .stat-number {
+        font-size: 48px;
+        font-weight: 800;
     }
 }
