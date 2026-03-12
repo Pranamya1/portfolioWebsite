@@ -323,8 +323,8 @@ body {
     .navbar-right .nav-link {
         display: block;
         width: calc(100% - 40px); /* 20px left + 20px right */
-        margin: 8px 20px 0 20px; /* smaller top margin */
-        padding: 10px 20px;      /* shorter height */
+        margin: 10px 20px 0 20px; /* top, right, bottom, left */
+        padding: 18px 20px;       /* restored height */
         border-radius: 12px;
         text-align: left;
         background-color: transparent;
@@ -425,8 +425,8 @@ body {
     .navbar-right .nav-link {
         display: block;
         width: calc(100% - 40px); /* 20px left + 20px right */
-        margin: 8px 20px 0 20px;  /* smaller top margin */
-        padding: 10px 20px;       /* shorter height */
+        margin: 10px 20px 0 20px; /* top, right, bottom, left */
+        padding: 18px 20px;       /* restored height */
         border-radius: 12px;
         text-align: left;
         background-color: transparent;
