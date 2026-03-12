@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Navbar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <div class="logo-box">
+                <span>PK</span>
+            </div>
+            <div class="identity">
+                <div class="name">PRANAMYA KALAMBE</div>
+                <div class="subtitle">SOFTWARE DEVELOPER</div>
+            </div>
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-menu-icon lucide-menu">
+                <path d="M4 5h16" />
+                <path d="M4 12h16" />
+                <path d="M4 19h16" />
+            </svg>
+        </button>
+
+        <nav class="navbar-right">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#" class="nav-link">Services</a>
+            <a href="#" class="nav-link">Our Work</a>
+            <a href="#" class="nav-link">About Me</a>
+            <a href="#" class="nav-link">Contact Me</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <section class="hero-inner">
+            <div class="hero-content">
+                <h1 class="hero-heading">
+                    Get More Customers<br>
+                    with a Professional<br>
+                    Website.
+                </h1>
+                <p class="hero-subheading">
+                    We design modern websites that build trust, showcase your services, and help local businesses grow
+                    faster.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary">See Our Work.</button>
+                    <button class="btn btn-secondary">See Our Services.</button>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="40">0</div>
+                        <div class="stat-label">Projects Completed.</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="36">0</div>
+                        <div class="stat-label">Happy Clients.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="Assets/Images/heroRight.png" alt="Hero preview" class="hero-image-img">
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
