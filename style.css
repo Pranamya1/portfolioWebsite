@@ -86,6 +86,7 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 20px; /* space between icon and text */
     font-weight: 500;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
