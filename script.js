@@ -1,51 +1,100 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const navToggle = document.querySelector(".nav-toggle");
-    const navbarRight = document.querySelector(".navbar-right");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const statNumbers = document.querySelectorAll(".stat-number");
+// Initialize Lucide Icons
+lucide.createIcons();
 
-    if (navToggle && navbarRight) {
-        navToggle.addEventListener("click", () => {
-            navbarRight.classList.toggle("open");
-        });
+// Mobile Menu Toggle
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+const menuIcon = document.getElementById('menu-icon');
+const closeIcon = document.getElementById('close-icon');
+
+mobileMenuToggle.addEventListener('click', () => {
+    const isOpen = !mobileNav.classList.contains('hidden');
+    
+    if (isOpen) {
+        mobileNav.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+    } else {
+        mobileNav.classList.remove('hidden');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
     }
+});
 
-    navLinks.forEach(link => {
-        link.addEventListener("click", (event) => {
-            navLinks.forEach(l => l.classList.remove("active"));
-            event.currentTarget.classList.add("active");
-
-            if (window.innerWidth <= 768 && navbarRight.classList.contains("open")) {
-                navbarRight.classList.remove("open");
-            }
-        });
+// Close mobile menu when clicking a link
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
     });
+});
 
-    // Animate statistics counters
-    const animateCounter = (element, target, duration = 1500) => {
-        let start = 0;
-        const startTime = performance.now();
+// Active Link Highlighting on Scroll
+const sections = document.querySelectorAll('section, main');
+const navLinks = document.querySelectorAll('.nav-link');
+const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-        const step = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const value = Math.floor(progress * target);
-            element.textContent = `${value}+`;
+window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPosition = window.scrollY + 100;
 
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            } else {
-                element.textContent = `${target}+`;
-            }
-        };
-
-        requestAnimationFrame(step);
-    };
-
-    statNumbers.forEach((el) => {
-        const target = parseInt(el.getAttribute("data-target"), 10);
-        if (!Number.isNaN(target)) {
-            animateCounter(el, target);
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
         }
     });
+
+    navLinks.forEach(link => {
+        link.classList.remove('nav-link-active');
+        if (link.getAttribute('data-id') === current) {
+            link.classList.add('nav-link-active');
+        }
+    });
+
+    mobileLinks.forEach(link => {
+        link.classList.remove('mobile-nav-active');
+        if (link.getAttribute('data-id') === current) {
+            link.classList.add('mobile-nav-active');
+        }
+    });
+});
+
+// Counter Animation
+const counters = document.querySelectorAll('.counter-container');
+const counterOptions = {
+    threshold: 0.5
+};
+
+const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const container = entry.target;
+            const valueDisplay = container.querySelector('.counter-value');
+            const endValue = parseInt(container.getAttribute('data-end'));
+            const duration = 2000;
+            let startTime = null;
+
+            const animate = (timestamp) => {
+                if (!startTime) startTime = timestamp;
+                const progress = timestamp - startTime;
+                const currentCount = Math.min(Math.floor((progress / duration) * endValue), endValue);
+                
+                valueDisplay.textContent = currentCount + (currentCount === endValue ? '+' : '');
+
+                if (progress < duration) {
+                    requestAnimationFrame(animate);
+                }
+            };
+            requestAnimationFrame(animate);
+            observer.unobserve(container);
+        }
+    });
+}, counterOptions);
+
+counters.forEach(counter => {
+    counterObserver.observe(counter);
 });
