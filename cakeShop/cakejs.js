@@ -1,24 +1,24 @@
 // Data
 const categories = [
-  { id: '1', name: 'Wedding Cakes', image: 'https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&q=80&w=800' },
-  { id: '2', name: 'Birthday Cakes', image: 'https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&q=80&w=800' },
-  { id: '3', name: 'Cupcakes', image: 'https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&q=80&w=800' },
-  { id: '4', name: 'Custom Designs', image: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&q=80&w=800' }
+  { id: '1', name: 'Wedding Cakes', image: '../Assets/Images/weddingCake.avif' },
+  { id: '2', name: 'Birthday Cakes', image: '../Assets/Images/birthdayCake.avif' },
+  { id: '3', name: 'Cupcakes', image: '../Assets/Images/cupCake.avif' },
+  { id: '4', name: 'Custom Designs', image: '../Assets/Images/customCake.avif' }
 ];
 
 const cakes = [
-  { id: '1', name: 'Classic Vanilla Bean', price: 45, category: 'Classic', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=800', description: 'Light, fluffy vanilla sponge layered with rich Madagascar vanilla bean buttercream.' },
-  { id: '2', name: 'Dark Chocolate Truffle', price: 55, category: 'Chocolate', image: 'https://images.unsplash.com/photo-1557925923-33b251dc32d6?auto=format&fit=crop&q=80&w=800', description: 'Decadent dark chocolate cake with silky chocolate ganache and truffle topping.' },
-  { id: '3', name: 'Strawberry Shortcake', price: 50, category: 'Fruit', image: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&q=80&w=800', description: 'Fresh strawberries and whipped cream sandwiched between layers of vanilla sponge.' },
-  { id: '4', name: 'Red Velvet Dream', price: 60, category: 'Premium', image: 'https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&q=80&w=800', description: 'Classic red velvet with our signature cream cheese frosting and pecan crumble.' },
-  { id: '5', name: 'Lemon Raspberry', price: 55, category: 'Fruit', image: 'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&q=80&w=800', description: 'Zesty lemon cake filled with tart raspberry compote and lemon buttercream.' },
-  { id: '6', name: 'Caramel Macchiato', price: 65, category: 'Premium', image: 'https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&q=80&w=800', description: 'Espresso-infused cake layers with salted caramel filling and coffee buttercream.' }
+  { id: '1', name: 'Classic Vanilla Bean', price: 300, category: 'Classic', image: '../Assets/Images/beenCake.jpeg', description: 'Light, fluffy vanilla sponge layered with rich Madagascar vanilla bean buttercream.' },
+  { id: '2', name: 'Dark Chocolate Truffle', price: 450, category: 'Chocolate', image: '../Assets/Images/truffelCake.webp', description: 'Decadent dark chocolate cake with silky chocolate ganache and truffle topping.' },
+  { id: '3', name: 'Strawberry Shortcake', price: 500, category: 'Fruit', image: '../Assets/Images/stroberryCake.jpg', description: 'Fresh strawberries and whipped cream sandwiched between layers of vanilla sponge.' },
+  { id: '4', name: 'Red Velvet Dream', price: 700, category: 'Premium', image: '../Assets/Images/redvelvetCake.jpeg', description: 'Classic red velvet with our signature cream cheese frosting and pecan crumble.' },
+  { id: '5', name: 'Lemon Raspberry', price: 150, category: 'Fruit', image: '../Assets/Images/lemonCupcake.jpg', description: 'Zesty lemon cake filled with tart raspberry compote and lemon buttercream.' },
+  { id: '6', name: 'Caramel Macchiato', price: 650, category: 'Premium', image: '../Assets/Images/caramelCake.webp', description: 'Espresso-infused cake layers with salted caramel filling and coffee buttercream.' }
 ];
 
 const chefs = [
-  { id: '1', name: 'Isabella Rossi', role: 'Head Pastry Chef', image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=400', description: 'Trained in Paris, Isabella brings 15 years of classical French pastry experience.' },
-  { id: '2', name: 'Marcus Chen', role: 'Cake Designer', image: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=400', description: 'An artist turned baker, Marcus specializes in gravity-defying custom sculptures.' },
-  { id: '3', name: 'Sarah Jenkins', role: 'Flavor Specialist', image: 'https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&q=80&w=400', description: 'Sarah is the genius behind our unique flavor combinations and seasonal menus.' }
+  { id: '1', name: 'Isabella Rossi', role: 'Head Pastry Chef', image: '../Assets/Images/chef1.avif', description: 'Trained in Paris, Isabella brings 15 years of classical French pastry experience.' },
+  { id: '2', name: 'Marcus Chen', role: 'Cake Designer', image: '../Assets/Images/chef1.avi2', description: 'An artist turned baker, Marcus specializes in gravity-defying custom sculptures.' },
+  { id: '3', name: 'Sarah Jenkins', role: 'Flavor Specialist', image: '../Assets/Images/chef3.avif', description: 'Sarah is the genius behind our unique flavor combinations and seasonal menus.' }
 ];
 
 // State
@@ -78,7 +78,7 @@ function renderMenu() {
       <div class="p-6 flex flex-col flex-grow">
         <div class="flex justify-between items-start mb-2">
           <h3 class="text-xl font-serif font-bold text-choco-900 line-clamp-1">${cake.name}</h3>
-          <span class="text-xl font-bold text-rose-500">$${cake.price}</span>
+          <span class="text-xl font-bold text-rose-500">₹${cake.price}</span>
         </div>
         <p class="text-choco-800/70 text-sm mb-6 flex-grow line-clamp-2">${cake.description}</p>
         <div class="flex gap-3 mt-auto">
