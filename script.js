@@ -98,3 +98,48 @@ const counterObserver = new IntersectionObserver((entries, observer) => {
 counters.forEach(counter => {
     counterObserver.observe(counter);
 });
+
+// Timeline Scroll Animation
+const timelineContainer = document.getElementById('timeline-container');
+const timelineFill = document.getElementById('timeline-fill');
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+if (timelineContainer && timelineFill) {
+    window.addEventListener('scroll', () => {
+        const containerRect = timelineContainer.getBoundingClientRect();
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+        const windowHeight = window.innerHeight;
+
+        // Start filling when the top of the container is at the middle of the screen
+        let scrollPercentage = 0;
+        const startPoint = windowHeight / 2;
+        
+        if (containerTop < startPoint) {
+            const scrolledPastStart = startPoint - containerTop;
+            scrollPercentage = (scrolledPastStart / containerHeight) * 100;
+        }
+
+        // Clamp between 0 and 100
+        scrollPercentage = Math.max(0, Math.min(100, scrollPercentage));
+        timelineFill.style.height = `${scrollPercentage}%`;
+    });
+}
+
+// Intersection Observer for Timeline Items
+const timelineObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.remove('opacity-0', 'translate-y-10');
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+timelineItems.forEach(item => {
+    timelineObserver.observe(item);
+});
